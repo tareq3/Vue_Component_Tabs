@@ -1,18 +1,40 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+
+      <h1>Parent</h1>
+      <button @click="selected='app-bike'">Bike</button>
+      <button @click="selected='app-rikshaw'">Rikshaw</button>
+      <button @click="selected='app-car'">Car</button>
+
+      
+<br>
+      <keep-alive>
+      <component style="height: 500px" :is="selected"> </component>
+      </keep-alive>
+    </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Bike from'./components/Bike';
+import Car from'./components/Car';
+import Rikshaw from'./components/Rikshaw';
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    'app-bike': Bike,
+    'app-car': Car,
+    'app-rikshaw': Rikshaw
+  
+  },
+
+  data(){
+    return{
+      counter:0,
+      selected:'app-rikshaw'
+    }
   }
+
 }
 </script>
 
@@ -23,6 +45,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  background-color: azure; 
   margin-top: 60px;
 }
 </style>
